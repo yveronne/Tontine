@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" id="WebApp_ID" version="3.0">
+  <display-name>Tontine</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <servlet>
+    <servlet-name>IndexController</servlet-name>
+    <servlet-class>controllers.IndexController</servlet-class>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>IndexController</servlet-name>
+    <url-pattern>/home</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AdherentHomeController</display-name>
+    <servlet-name>AdherentHomeController</servlet-name>
+    <servlet-class>controllers.adherent.AdherentHomeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdherentHomeController</servlet-name>
+    <url-pattern>/adherent/home</url-pattern>
+  </servlet-mapping>
+    <servlet>
+    <display-name>GestionnaireHomeController</display-name>
+    <servlet-name>GestionnaireHomeController</servlet-name>
+    <servlet-class>controllers.gestionnaire.GestionnaireHomeController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>GestionnaireHomeController</servlet-name>
+    <url-pattern>/gestionnaire/home</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>BaseController</display-name>
+    <servlet-name>BaseController</servlet-name>
+    <servlet-class>controllers.BaseController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BaseController</servlet-name>
+    <url-pattern>/deconnexion</url-pattern>
+  </servlet-mapping>
+
+</web-app>

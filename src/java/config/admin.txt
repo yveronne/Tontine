@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<administrateurs>
+   <admin>
+      <id>azerty</id>
+      <password>azerty</password>
+   </admin>
+   <admin>
+      <id>toto</id>
+      <password>toto</password>
+   </admin>
+   <admin>
+      <id>momo</id>
+      <password>momo</password>
+   </admin>
+</administrateurs>

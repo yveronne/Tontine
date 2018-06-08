@@ -1,0 +1,19 @@
+body{
+	background-color: #EED917;
+	text-align: center;
+	padding-top: 5%
+}
+
+.btn-mine{
+	background-color: #353232;
+	color: #EED917;
+}
+
+h1{
+	font-family: 'Montserrat Alternates';
+	font-weight: bold;
+}
+
+#welcomeDiv{
+	padding-top: 15px
+}
