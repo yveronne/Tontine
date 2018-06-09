@@ -21,8 +21,8 @@ import models.Connecteur;
  * Servlet implementation class BaseController
  */
 public class BaseController extends HttpServlet {
-	protected Gestionnaire gestionnaire;
-        protected Adherent adherent;
+	protected static Gestionnaire gestionnaire;
+        protected static Adherent adherent;
 	protected boolean redirected=false;
         protected boolean secured=false;
     /**
