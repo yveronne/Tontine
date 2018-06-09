@@ -37,6 +37,15 @@
     <url-pattern>/gestionnaire/home</url-pattern>
   </servlet-mapping>
   <servlet>
+    <display-name>AdherentDetailController</display-name>
+    <servlet-name>AdherentDetailController</servlet-name>
+    <servlet-class>controllers.adherent.AdherentDetailController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdherentDetailController</servlet-name>
+    <url-pattern>/adherent/details</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>BaseController</display-name>
     <servlet-name>BaseController</servlet-name>

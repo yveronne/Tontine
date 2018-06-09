@@ -1,0 +1,280 @@
+
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 4 mai 2018, 15:45:21
+    Author     : madina
+*/
+body,html{
+    margin: 0;
+    padding: 0;
+}
+.header
+{
+    border:solid;
+    background-color: #fff;
+    border-color: rgb(101,67,86);
+    height: 120px;
+    border-width: 1px;
+    margin: 0;
+}
+.navbar-default
+{
+	background-color: white;
+	border-color: white;
+}
+
+.menu
+{
+    margin-top: -60px;
+}
+
+.lien
+{
+
+	display: inline-block;
+	padding-top: 40px;
+	padding-right: 40px;
+    padding-left: 20px;
+
+	color: black;
+}
+.image
+{
+	position: relative;
+	height: 110px;
+	z-index: 1000000;
+}
+.footer
+{
+    
+    height: 50px;
+    margin-top: 2px;
+    border:solid;
+    border-color: rgb(101,67,86);
+    border-width: 1px;
+    text-align: center;
+    padding: 15px;
+
+}
+span{
+    color: gainsboro;
+}
+.contenu{
+   height: 550px;
+   border:solid;
+   bordeabsolute 2px;
+   border-color: black;
+}
+.division{
+    border:solid;
+    border-width: 1px;
+    border-color:#eed917;
+    }
+
+.menu-gauche{
+    text-align: center;
+    background-color:rgb(54,51,51);
+    height: 550px;
+    padding: 20px;
+    
+}
+.milieu,.header,.footer{
+    display: block;
+}
+.milieu{
+    background-color:whitesmoke;
+    padding: 0px;
+    position: relative;
+    
+    z-index: 0;
+    margin: 
+    0;
+}
+.lien-gauche
+{
+    color: white;    
+}
+
+
+.ariane
+{
+	
+	height: 40px;
+	background-color: rgb(54,51,51);
+	color: white;
+}
+div ul#breadcrumbs
+{
+	color: yellow;
+	background-color: rgb(118,26,121);
+}
+#espace_jaune
+{
+	top: 175px;
+	background-color: rgb(243,198,49);
+	height: 45px;
+	padding-top: 10px;
+}
+#formulaire
+{
+	height: 410px;
+}
+.espace_blanc
+{
+	height: 17px;
+}
+.modification_detail
+{
+    text-decoration: underline rgb(243,198,49) double;
+	font-weight: bold;
+	color: black;
+}
+div.ariane div a
+{
+	color: white;
+}
+div.ariane div span 
+{
+	color: rgb(243,198,49);
+}
+div.ariane div
+{
+	margin-top: 9px;
+}
+#tableau_listEmprunts
+{
+    height: 127px;
+}
+
+
+table
+{
+	font-weight: bold;
+	border-color: red
+}
+td
+{
+	height: 50px;
+
+}
+ .pagination_space
+{
+	margin-bottom: 20px;
+   height: 20px;
+}
+.net_percevoir
+{
+	height: 10px;
+	columns: black;
+	margin-bottom: 50px;
+	font-weight: bold;
+}
+.cfa
+{
+	font-size: 15px;
+}
+.argent
+{
+	font-size: 20px;
+}
+.ventePart
+{
+	height:  25px;
+}
+.enregistrerSouscription
+{
+	padding-top: 30px;
+
+	font-weight: bold;
+	text-decoration: underline double rgb(243,198,49);
+	padding-bottom: 40px;
+
+}
+.plus
+{
+	font-size: 15px;
+	color: rgb(243,198,49);
+	font-weight: bold;
+ }
+ .pagination2
+ {
+ 	text-decoration: none;
+ 	text-align: center;
+ 	font-weight: bold;
+ 	height: 30px;
+    
+ }
+ .left
+ {
+     font-size: 20px;
+	color: rgb(243,198,49);
+	font-weight: bold;
+		
+ }
+strong a
+{
+	color: black;
+}
+.modal-dialog {
+  
+  padding-top:10%;
+}
+
+.modalBody {
+  margin-left: 0px;
+
+  margin-top: 10px;
+}
+.modal-header
+{
+	height: 50px;
+	
+	background-color: rgb(243,198,49);
+}
+h5
+{
+	font-size: 17px;
+}
+
+.enregistrerE
+{
+
+    margin-top: 30px;
+	color: rgb(243,198,49);
+	width: 100px;
+	background-color: rgb(118,26,121);
+	margin-right: auto;
+	margin-left: auto;
+
+}
+.small_menu
+{
+	position: relative;
+	z-index: 100;
+}
+.sou-menu
+{
+	background-color: white;
+}
+.ERetour
+{
+	text-align: center;
+}
+.recherche
+{
+	
+	height: 35px;
+	color: rgb(243,198,49);
+	width: 100px;
+	background-color: rgb(118,26,121);
+	margin-right: auto;
+	margin-left: auto;
+}
+.total
+{
+	font-size: 20px;
+}
