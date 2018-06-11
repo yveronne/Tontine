@@ -20,12 +20,12 @@ import java.util.logging.Logger;
  */
 public abstract class PersistantClass implements Persistance{
     
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-    static final String DB_URL = "jdbc:mysql://localhost/tontinebd";
-    static final String USER = "root";
-    static final String PASS = "";
-    static Statement stmt = null;
-    static Connection conn = null;
+    public static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
+    public static final String DB_URL = "jdbc:mysql://localhost/tontinebd";
+    public static final String USER = "root";
+    public static final String PASS = "";
+    public static Statement stmt = null;
+    public static Connection conn = null;
     
     public ResultSet getFromDB(String req){
         ResultSet rs = null;
@@ -50,7 +50,9 @@ public abstract class PersistantClass implements Persistance{
 
         ResultSet rs = getFromDB(req);
         String res = null;
-        if (rs==null) throw new RuntimeException();
+        if (rs==null) {
+            throw new RuntimeException();
+        }
         try{
             while(rs.next()){
                 res = rs.getString(1);
@@ -84,6 +86,7 @@ public abstract class PersistantClass implements Persistance{
 
             stmt = conn.createStatement();
             stmt.executeUpdate(req);
+            conn.close();
         } catch(SQLException se){
             //Handle errors for JDBC
             res = false;

@@ -10,7 +10,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.sql.Date;
-import java.sql.PreparedStatement;
 
 /**
  *
@@ -85,6 +84,14 @@ public class Adherent extends PersistantClass{
         return executeQuerry(q);
     }
     
+    public Adherent connect(String matricule,String password){
+        Adherent ad=rechercherParMatricule(matricule);
+        if(ad!=null && ad.password.equals(password)){
+            return ad;
+        }
+        return null;
+    }
+    
     public String getPassword(){
         return password;
     }
@@ -96,7 +103,10 @@ public class Adherent extends PersistantClass{
     }
     
     public String genererMatricule(){
-        int d = Integer.parseInt(getInformationFromDB("select count(matricule) from adherent"));
+        String de = getInformationFromDB("select count(matricule) from adherent");
+        int d;
+        if (de== null) d = 0;
+        else d = Integer.parseInt(de);
         String e = (d+1<10 ? "0"+(d+1): (d+1)+"");
         this.matricule = e+""+nom.toUpperCase().substring(0, 4)+"2018";// format 07DANI2018
         return matricule;
@@ -160,13 +170,7 @@ public class Adherent extends PersistantClass{
          }//end try
         return p;
     }
-    public Adherent connect(String matricule,String password){
-        Adherent ad=rechercherParMatricule(matricule);
-        if(ad!=null && ad.password.equals(password)){
-            return ad;
-        }
-        return null;
-    }
+    
     public boolean suspendre(String idg){
         if (this.isSuspendu()) return false;
         Date d = new java.sql.Date(Calendar.getInstance().getTime().getTime());
@@ -185,9 +189,9 @@ public class Adherent extends PersistantClass{
         return false;
     }
     
-    public boolean exclure(){
+    public boolean exclure(String idg){
         if (this.isExclu()) return false;
-        Exclusion s = new Exclusion(matricule);
+        Exclusion s = new Exclusion(matricule, idg);
         return s.enregistrer();
     }
     
@@ -202,16 +206,17 @@ public class Adherent extends PersistantClass{
     }
     
     public int getPartID(int idf){
-        int n = Integer.parseInt(getInformationFromDB("select max(id) from part where matricule='"+matricule+"' and IDFond="+idf));//==0 si aucune part...
-        if (n==0) return 0;
+        String  en = getInformationFromDB("select max(id) from part where matricule='"+matricule+"' and IDFond="+idf);//==0 si aucune part...
+        if (en==null || Integer.parseInt(en)==0) return 0;
         else return Integer.parseInt(getInformationFromDB("select id from part where matricule='"+matricule+"' and IDFond="+idf));
     }
     
-    public boolean ajouterPart(int nbreParts, int idf, String idg){
+    public boolean ajouterPart(int nbreParts, int idf, String idg) throws SQLException{
         if (!isNormal()) return false;
         int i = getPartID(idf);
         if (i!=0) {
             Part p = new Part(i);
+            new Souscription(i, nbreParts, idg).enregistrer();
             return p.setNombre(p.getNombre()+nbreParts);
         }
         else new Part(nbreParts, matricule, idf, idg).enregistrer();
@@ -237,8 +242,8 @@ public class Adherent extends PersistantClass{
         return le;
     }
     
-    public boolean Emprunter(long somme, int idf, String idg){
-        if (!isNormal() || verifierEmpruntEnCours(idf)) return false;
+    public int Emprunter(long somme, int idf, String idg){
+        if (!isNormal() || verifierEmpruntEnCours(idf)) return 0;
         return new Emprunt(somme, matricule, idf, idg).enregistrer();
     }
     
@@ -263,7 +268,6 @@ public class Adherent extends PersistantClass{
         long mapart = Math.round((mesParts/nbreTotalParts)*sommeAPartager);
         return mapart;
     }
-    
 
     public String getMatricule() {
         return matricule;

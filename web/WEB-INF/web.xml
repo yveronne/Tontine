@@ -46,6 +46,24 @@
     <url-pattern>/adherent/details</url-pattern>
   </servlet-mapping>
   <servlet>
+    <display-name>AdherentListeEmpruntsController</display-name>
+    <servlet-name>AdherentListeEmpruntsController</servlet-name>
+    <servlet-class>controllers.adherent.AdherentListeEmpruntsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdherentListeEmpruntsController</servlet-name>
+    <url-pattern>/adherent/listeEmprunts</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <display-name>AdherentListeSouscriptionsController</display-name>
+    <servlet-name>AdherentListeSouscriptionsController</servlet-name>
+    <servlet-class>controllers.adherent.AdherentListeSouscriptionsController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdherentListeSouscriptionsController</servlet-name>
+    <url-pattern>/adherent/listeSouscriptions</url-pattern>
+  </servlet-mapping>
+  <servlet>
     <description></description>
     <display-name>BaseController</display-name>
     <servlet-name>BaseController</servlet-name>
@@ -55,5 +73,6 @@
     <servlet-name>BaseController</servlet-name>
     <url-pattern>/deconnexion</url-pattern>
   </servlet-mapping>
+  
 
 </web-app>

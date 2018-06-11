@@ -39,11 +39,29 @@ public class AdherentDetailController extends BaseController {
     }
 
     
-//    @Override
-//    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        processRequest(request, response);
-//    }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String oldPass, newPass, message;
+        Adherent adherent2 = new Adherent();
+        oldPass = request.getParameter("oldPass").toString();
+        newPass = request.getParameter("newPass").toString();
+        if(oldPass.equals(this.adherent.getPassword())){
+            if(this.adherent.setPassword(newPass)){
+                message = "Vos modifications ont bien été enregistrées";
+            }
+            else{
+                message = "Une erreur est survenue. Veuillez réessayer";
+            }        
+        }
+        else{
+            message = "L'ancien mot de passe saisi est erroné";
+        }
+        adherent2 = this.adherent;
+        request.setAttribute("message", message);
+        request.setAttribute("adherent2", adherent2);
+        this.getServletContext().getRequestDispatcher(url).forward(request, response);
+    }
 
     
 

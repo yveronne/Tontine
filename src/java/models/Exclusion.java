@@ -19,25 +19,29 @@ public class Exclusion extends PersistantClass{
     private Date date;
     private String matricule;
     private int id;
+    private String idGest;
     
     public Exclusion(int id){
         this.copy(rechercherParID(id));
     }
     
-    public Exclusion(Date d, int id, String mat){
+    public Exclusion(Date d, int id, String mat, String idg){
         this.date = d;
         this.id = id;
         this.matricule = mat;
+        this.idGest = idg;
     }
     
     public void copy(Exclusion d){
         this.date = d.date;
         this.id = d.id;
         this.matricule = d.matricule;
+        this.idGest = d.idGest;
     }
     
-    public Exclusion(String mat){
+    public Exclusion(String mat, String idGest){
         this.matricule = mat;
+        this.idGest = idGest;
     }
     
     public Exclusion rechercherParID(int id){
@@ -49,7 +53,7 @@ public class Exclusion extends PersistantClass{
             
             while(rs.next()){//Date d, long m, int id, int ide){
                 p =  new Exclusion(rs.getDate("date"), rs.getInt("id")
-                         , rs.getString("matricule"));
+                         , rs.getString("matricule"), rs.getString("idGest"));
             }
 
          } catch(SQLException se){
@@ -64,7 +68,7 @@ public class Exclusion extends PersistantClass{
     
     public boolean enregistrer(){
         
-        boolean b = executeQuerry("insert into exclusion set matricule='"+matricule+"'");
+        boolean b = executeQuerry("insert into exclusion set matricule='"+matricule+"', idGest='"+idGest+"'");
         if (b) id = Integer.parseInt(getInformationFromDB("select max(id) from exclusion where matricule='"+matricule+"'"));
         return b;
     }
@@ -81,6 +85,8 @@ public class Exclusion extends PersistantClass{
         return id;
     }
     
-    
+    public String getIdGest(){
+        return idGest;
+    }
 
 }

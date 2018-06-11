@@ -129,9 +129,11 @@ public class Emprunt extends PersistantClass{
         return p;
     }
     
-    public boolean enregistrer(){
+    public int enregistrer(){
         boolean b =executeQuerry("insert into emprunt set matricule='"+matricule+"', montant="+montant+", idFond="+idFond+", IDGest='"+IDGest+"'");
         if (b) id = Integer.parseInt(getInformationFromDB("select id from emprunt where matricule='"+matricule+"' and idFond="+idFond));
-        return b;
+        if (b) new Fond(idFond).diminuerSolde(montant);
+        if (b) return id;
+        else return 0;
     }
 }

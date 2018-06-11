@@ -58,11 +58,12 @@ public class Part extends PersistantClass{
         this.IDGest = p.IDGest;
     }
 
-    public int enregistrer(){
+    public int enregistrer() throws SQLException{
         executeQuerry("insert into part set matricule='"+matricule+"', nombre="+nombre+", idFond="+idFond+", IDGest='"+IDGest+"'");
         Fond f = new Fond(idFond);
         f.ajouterDepot(VALEUR*nombre);
         id = Integer.parseInt(getInformationFromDB("select id from part where matricule='"+matricule+"' and idFond="+idFond));
+        new Souscription(id, nombre, IDGest).enregistrer();
         return id;
     }
 
@@ -116,6 +117,15 @@ public class Part extends PersistantClass{
         return b;
     }
 
+    public ArrayList<Souscription> getListeSouscription(){
+        ArrayList<Souscription> lr = new ArrayList();
+        ArrayList<String> l = getListInformationFromDB("select id from souscription where idPart="+id);
+        for(String s:l){
+            lr.add(new Souscription(Integer.parseInt(s)));
+        }
+        return lr;
+    }
+    
     public Date getDateSouscription() {
         return dateSouscription;
     }

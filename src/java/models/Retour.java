@@ -81,6 +81,7 @@ public class Retour extends PersistantClass{
             executeQuerry("insert into retour set idEmprunt="+idEmprunt+", montant="+montant+", IDGest ='"+IDGest+"'");
             id = Integer.parseInt(getInformationFromDB("select max(id) from retour where idEmprunt="+idEmprunt+" and montant="+montant));
             
+            new Fond(e.getIdFond()).ajouterSolde(montant);
             int som = 0;
             for(Retour s:e.getListeRetour()){
                 som+=s.getMontant();

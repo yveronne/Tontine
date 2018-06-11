@@ -6,10 +6,12 @@
 package models;
 
 import java.io.File;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import org.jdom2.Element;
+import static org.jdom2.filter.Filters.document;
 import org.jdom2.input.SAXBuilder;
 
 /**
@@ -58,7 +60,7 @@ public class Gestionnaire {
         adminsPass = new ArrayList();
         try
         {
-           document = sxb.build(Gestionnaire.class.getResource("/config/admin.txt"));
+           document = sxb.build(new File("admin.txt"));
         }
         catch(Exception e){e.printStackTrace();}
         racine = document.getRootElement();
@@ -89,11 +91,11 @@ public class Gestionnaire {
         return e.enregistrerAdherent();
     }
     
-    public boolean enregistrerSouscription(Adherent e, int nbreParts, int idf){
+    public boolean enregistrerSouscription(Adherent e, int nbreParts, int idf) throws SQLException{
         return e.ajouterPart(nbreParts, idf, id);
     }
     
-    public boolean enregistrerEmprunt(Adherent e, long s, int idFond){
+    public int enregistrerEmprunt(Adherent e, long s, int idFond){
         return e.Emprunter(s, idFond, id);
     }
     
@@ -102,7 +104,7 @@ public class Gestionnaire {
     }
     
     public boolean exclure(Adherent e){
-        return e.exclure();
+        return e.exclure(id);
     }
     
     public boolean suspendre(Adherent e){
